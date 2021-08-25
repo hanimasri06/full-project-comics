@@ -1,0 +1,45 @@
+<header class="l-header" id="header">
+    <nav class="nav bd-container">
+        <a href="/" class="nav-logo"><img src="https://s3-media0.fl.yelpcdn.com/assets/public/yelp_logo_www_home.yji-7d24f1680fdb98ca54a82c26cdbdc7bd.svg" alt=""></a>
+
+        <div class="nav-menu " id="nav__menu">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="/" class="nav-link ">Home</a></li>
+                <li class="nav-item" id="comic"><a href="/comics" class="nav-link">Comics</a>
+                    <ul id="drop__down">
+                        <li class="nav-item">Superhero</li>
+                        <li class="nav-item">Manga</li>
+                        <li class="nav-item">Slice-of-Life</li>
+                        <li class="nav-item">Humor</li>
+                        <li class="nav-item">Sci-fi</li>
+                        <li class="nav-item">Fantasy</li>
+                        <li class="nav-item">Horror</li>
+                        <li class="nav-item">Action</li>
+                        <li class="nav-item">Nonfiction</li>
+                    </ul>
+                </li>
+
+                    <li class="nav-item"><a href="/comics/new" class="nav-link">Add New Comic</a></li>
+
+                
+
+                <form action="/comics/search" method="GET" class="search-form">
+                    <input type="search" class="search-bar"placeholder="Search" name="term" aria-label="Search">
+                    <button type="submit" class="search">Search</button>
+                </form>
+                <% if (user) { %> 
+                    <li class="nav-item"><a href="/logout" class="nav-link">Log Out</a></li>
+                <% } else { %> 
+                    <li class="nav-item"><a href="/signup" class="nav-link">Sign Up</a></li>
+                    <li class="nav-item"><a href="/login" class="nav-link">Log In</a></li>
+                <% } %> 
+                
+                
+            </ul>
+        </div>
+
+        <div class="nav__toggle" id="nav-toggle">
+            <i class='bx bx-menu'></i>
+        </div>
+    </nav>
+</header>

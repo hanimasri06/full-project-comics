@@ -1,0 +1,31 @@
+<%- include('patials/header')  %> 
+<%- include('patials/navbar')  %> 
+
+<div class="bd-container section">
+    <div class="comics-container bd-grid">
+        <div class="comics-data">
+            <h2 class="section-subtitle">These are some books shared by our community</h2>
+            <h1 class="section-title">COMICS</h1>
+        </div>
+        <div class="books-container bd-grid">
+            <% comics.forEach(element => { %>
+            <div class="books-content">
+                <a class="books-cover" href="/comics/<%= element._id %> "><img src="<%= element.cover  %> " class="comic-img"alt="" srcset=""></a>
+                <h3 class="book-title"><%= element.title  %></h3>
+                <span class="book-author"><%= element.author  %></span>
+                <a href="/comics/<%= element._id %> " class="button book-button"><i class="fas fa-angle-double-right"></i></a>
+            </div>
+            <% }); %> 
+            
+
+        </div>
+    </div>
+
+
+
+
+</div>
+
+
+
+<%- include('patials/footer')  %> 

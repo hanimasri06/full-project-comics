@@ -1,0 +1,24 @@
+<%- include('patials/header')  %> 
+<%- include('patials/navbar')  %> 
+
+<div class="new-book-body"></div>
+    <div class="new-book-container">
+        <h1>Add new Comment</h1>
+        <p>Share a comment about the books You Read</p>
+        <form method="POST" name="form" action="/comics/<%= comicId  %>/comments" data-netlify="True" data-netlify-recaptcha="true">
+                    
+                <div class="column">
+                    <label for="comment">Comment</label>
+                    <textarea name="comment" placeholder="Share a comment about this book" id="comment"  rows="3"></textarea>
+                </div>
+                <input type="hidden" name="comicId" value="<%= comicId  %>">
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+
+
+<%- include('patials/footer')  %> 

@@ -1,0 +1,25 @@
+<%- include('patials/header')  %> 
+<%- include('patials/navbar')  %> 
+<div class="new-book-body"></div>
+    <div class="new-book-container">
+        <h1>Sign up</h1>
+        <form method="POST" name="form" action="/signup" data-netlify="True" data-netlify-recaptcha="true">
+            <div class="new-book-row">
+                <div class="column">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter your email">
+                </div>
+                <div class="column">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" placeholder="Enter your username">
+                </div>
+                <div class="column">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Enter your password">
+                </div>
+            </div>       
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</div>
+<%- include('patials/footer')  %> 

@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+.new-book-body {
+    background: linear-gradient(135deg, #6f6df4, #4c46f5);
+    height: 100vh;
+    font-family: "poppins", "sans-serif";
+    overflow-y: hidden;
+}
+
+.new-book-container {
+background: #ffffff;
+padding: 35px 50px;
+width: 75%;
+min-width: 420px;
+transform: translate(-50%, -50%);
+position: absolute;
+left: 50%;
+top: 50%;
+border-radius: 10px;
+box-shadow: 20px 30px 25px rgba(0, 0, 0, 0.15);
+margin: 2rem 1vw 0 0.5vw;
+}
+.new-book-container h1 {
+text-align: start;
+font-size: 30px;
+color: #1c093c;
+text-transform: uppercase;
+font-weight: 500;
+}
+
+.new-book-container p {
+position: relative;
+margin: 0 auto 10px auto;
+text-align: center;
+width: 100%;
+color: #606060;
+font-size: 1.5rem;
+font-weight: 400;
+}
+
+.new-book-container form {
+width: 100%;
+position: relative;
+margin: 30px 0 auto 0 auto;
+}
+
+.new-book-row {
+width: 100%;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+grid-gap: 20px 30px;
+margin-bottom: 20px;
+}
+
+label {
+color: #1c093c;
+font-size: 1.4rem;
+}
+textarea,
+input {
+width: 100%;
+font-weight: 400;
+padding: 8px 10px;
+border-radius: 5px;
+border: 1.2px solid #c4cae0;
+margin-top: 5px;
+}
+
+textarea {
+resize: none;
+font-family: "poppins", "sans-serif";
+}
+textarea:focus,
+input:focus {
+outline: none;
+border-color: #6f6df4;
+
+}
+
+button {
+border: none;
+padding: 10px 20px;
+background: linear-gradient(130deg, #6f6df4, #4c46f5);
+color: #ffffff;
+border-radius: 3px;
+font-family: "poppins", "sans-serif";
+margin-top: 2rem;
+}
+
+#color {
+    width: 1rem;
+}

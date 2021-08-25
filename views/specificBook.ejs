@@ -1,0 +1,46 @@
+<%- include('patials/header')  %> 
+<%- include('patials/navbar')  %> 
+<!-- Make this a table -->
+<section class="home" id="home">
+                <div class="home__container bd-container bd-grid">
+                    <div class="home__data">
+                        <h1 class="home__title"><%= comics.title  %> </h1>
+                        <h2 class="home__subtitle"><%= comics.author  %> </h2>
+                        <h3 class="home__subtitle">Published date: <%= comics.date  %></h3>
+                        <h3 class="home__subtitle">Series: <%= comics.series  %></h3>
+                        <h3 class="home__subtitle">Issue: <%= comics.issue %></h3>
+                        <h3 class="home__subtitle">Genre <%= comics.genre  %></h3>
+                        <h3 class="home__subtitle">Color: <%= comics.color  %></h3>
+                        <p class="home-review"><%= comics.review  %> </p>
+                    </div>
+    
+                    <img src="<%= comics.cover %> " alt="" class="home__img">
+                        <div class="delete">
+                            <a href="/comics/<%=comics._id %>/edit "><button> EDIT </button></a>
+                            <form action="/comics/<%= comics._id %>?_method=DELETE" method="POST">
+                                <button type="submit">DELETE</button>
+                            </form>
+                        </div>
+
+                </div>
+                <br><br><br><br>
+                <a href="/comics/<%= comics._id  %>/comments/new"><button>Add Comment</button></a>
+                <% comments.forEach((cmnt) => { %> 
+                    <div class="comments-container">
+                        <!-- username - comment loop -->
+                        <h1>Username: <%= cmnt.user.username  %> Comment: <%= cmnt.text  %>  </h1>
+                        <a href="/comics/<%= comics._id  %>/comments/<%= cmnt._id  %>/edit"><button>Edit Comment</button></a>
+                        <form action="/comics/<%= comics._id  %>/comments/<%= cmnt._id  %>?_method=DELETE" method="post">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </div>
+                <% })  %> 
+                
+</section>
+
+
+
+
+
+
+<%- include('patials/footer')  %> 
