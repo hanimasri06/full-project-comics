@@ -18,9 +18,9 @@
                         <li class="nav-item">Nonfiction</li>
                     </ul>
                 </li>
-
+               <%  if (user) { %>
                     <li class="nav-item"><a href="/comics/new" class="nav-link">Add New Comic</a></li>
-
+                <% } %> 
                 
 
                 <form action="/comics/search" method="GET" class="search-form">

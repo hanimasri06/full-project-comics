@@ -15,13 +15,14 @@
                     </div>
     
                     <img src="<%= comics.cover %> " alt="" class="home__img">
+                    <% if (user && user.username === comics.owner.username) {%> 
                         <div class="delete">
                             <a href="/comics/<%=comics._id %>/edit "><button> EDIT </button></a>
                             <form action="/comics/<%= comics._id %>?_method=DELETE" method="POST">
                                 <button type="submit">DELETE</button>
                             </form>
                         </div>
-
+                    <% } %> 
                 </div>
                 <br><br><br><br>
                 <a href="/comics/<%= comics._id  %>/comments/new"><button>Add Comment</button></a>
@@ -29,10 +30,12 @@
                     <div class="comments-container">
                         <!-- username - comment loop -->
                         <h1>Username: <%= cmnt.user.username  %> Comment: <%= cmnt.text  %>  </h1>
+                        <% if (user && user.username === cmnt.user.username) { %> 
                         <a href="/comics/<%= comics._id  %>/comments/<%= cmnt._id  %>/edit"><button>Edit Comment</button></a>
                         <form action="/comics/<%= comics._id  %>/comments/<%= cmnt._id  %>?_method=DELETE" method="post">
                             <button type="submit">Delete</button>
                         </form>
+                        <% } %> 
                     </div>
                 <% })  %> 
                 
