@@ -13,7 +13,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const expressSession = require('express-session')
 
 // Config imports
-try{const { connection, conn } = require('./public/js/server')}
+try{var { connection, conn } = require('./public/js/server')}
 catch (e) {
     console.log('Could not import server. This probably means you\'re not workin locally');
     console.log(e)
@@ -82,4 +82,4 @@ app.use('/',authRoutes)
 app.use("/comics",comicRoutes)
 app.use('/comics/:id/comments',commentsRoutes)
 
-app.listen(3000, () => console.log('server is up'))
+app.listen(process.env.PORT || 3000, () => console.log('server is up'))
