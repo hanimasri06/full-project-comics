@@ -13,7 +13,12 @@ const LocalStrategy = require('passport-local').Strategy;
 const expressSession = require('express-session')
 
 // Config imports
-const { connection, conn } = require('./public/js/server')
+try{const { connection, conn } = require('./public/js/server')}
+catch (e) {
+    console.log('Could not import server. This probably means you\'re not workin locally');
+    console.log(e)
+}
+
 const {Book, Comment, User} = require('./public/js/model')
 
 // =======================================
