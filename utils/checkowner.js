@@ -2,7 +2,6 @@ const {Book, Comment} = require('../public/js/model');
 
 const checkComicOwner = async (req,res, next) => {
     const comic = await Book.findById(req.params.id).exec()
-    console.log(req.user._id, comic.owner.id)
     if (comic.owner.id.equals(req.user._id)) {
         res.locals.comic = comic;
         next()
@@ -18,8 +17,8 @@ const checkCommentOwner = async (req, res, next) => {
         res.locals.comment = comment
         next()
     } else {
-        res.redirect('back');
         req.flash('error', 'You must be comment owner')
+        res.redirect('back');
     }
     
 }
