@@ -6,17 +6,17 @@
             <ul class="nav-list">
                 <li class="nav-item"><a href="/" class="nav-link ">Home</a></li>
                 <li class="nav-item" id="comic"><a href="/comics" class="nav-link">Comics</a>
-                    <ul id="drop__down">
-                        <li class="nav-item">Superhero</li>
-                        <li class="nav-item">Manga</li>
-                        <li class="nav-item">Slice-of-Life</li>
-                        <li class="nav-item">Humor</li>
-                        <li class="nav-item">Sci-fi</li>
-                        <li class="nav-item">Fantasy</li>
-                        <li class="nav-item">Horror</li>
-                        <li class="nav-item">Action</li>
-                        <li class="nav-item">Nonfiction</li>
-                    </ul>
+                    <div id="drop__down" aria-labelledby="navbarDropdown">
+                        <a class="nav-item" href="/comics/genre/superhero">Superhero</a>
+                        <a class="nav-item" href="/comics/genre/manga">Manga</a>
+                        <a class="nav-item" href="/comics/genre/slice-of-life">Slice-of-life</a>
+                        <a class="nav-item" href="/comics/genre/humor">Humor</a>
+                        <a class="nav-item" href="/comics/genre/sci-fi">Sci-fi</a>
+                        <a class="nav-item" href="/comics/genre/fantasy">Fantasy</a>
+                        <a class="nav-item" href="/comics/genre/horror">Horror</a>
+                        <a class="nav-item" href="/comics/genre/action">Action</a>
+                        <a class="nav-item" href="/comics/genre/nonfiction">Nonfiction</a>
+                    </div>
                 </li>
                 <form action="/comics/search" method="GET" class="search-form">
                     <input type="search" class="search-bar"placeholder="Search" name="term" aria-label="Search">

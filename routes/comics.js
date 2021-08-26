@@ -36,6 +36,25 @@ console.log(err)
 }
 })
 
+router.get('/genre/:genre', async (req, res, next) => {
+    // Check if the given genre is valid 
+    const validGenres = ['superhero', 'manga', 'slice-of-life', 'humor', 'sci-fi', 'fantasy', 'horror', 'action', 'nonficiton']
+    
+    if (validGenres.includes(req.params.genre.toLocaleLowerCase())) {
+    // If yes continue
+    const comics = await Book.find({genre: req.params.genre}).exec()
+    res.render('comics', {comics})
+    }
+    else {
+        // If no, send error
+        res.send('error')
+    }
+
+} )
+
+
+
+
 // SPECIFIC
 router.get('/:id', async (req, res, next) => {
 try {

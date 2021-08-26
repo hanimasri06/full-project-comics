@@ -11,3 +11,13 @@ const showMenu = (toggleId, navId) =>{
     }
 }
 showMenu('nav-toggle','nav__menu')
+
+
+
+const genrebtn = document.getElementById('comic');
+const genreMenu = document.getElementById('drop__down');
+
+
+genrebtn.addEventListener('mouseover', () => {
+    genreMenu.classList.toggle('drop-down-show-menu')
+})
