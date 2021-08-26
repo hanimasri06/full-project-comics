@@ -72,9 +72,11 @@ const commentsRoutes = require('./routes/comments');
 const indexRoutes = require('./routes/index')
 const authRoutes = require('./routes/auth')
 
-// current user middleware config
+// State Config (look it up)
 app.use((req, res, next) => {
     res.locals.user = req.user;
+    res.locals.errorMessage = req.flash("error");
+    res.locals.successMessage = req.flash('success')
     next();
 })
 

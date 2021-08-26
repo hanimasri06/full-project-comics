@@ -21,3 +21,10 @@ const genreMenu = document.getElementById('drop__down');
 genrebtn.addEventListener('mouseover', () => {
     genreMenu.classList.toggle('drop-down-show-menu')
 })
+
+
+const closeBtn = document.getElementById('flashBtn');
+const flash = document.getElementById('flash__id')
+closeBtn.addEventListener('click', ()=> {
+flash.classList.toggle('flash-new', true)
+})

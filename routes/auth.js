@@ -29,7 +29,7 @@ router.post('/signup', async (req, res) => {
 
 // Login show form
 router.get('/login', (req, res) => {
-    res.render('login')
+    res.render('login');
 });
 
 // Login Post
