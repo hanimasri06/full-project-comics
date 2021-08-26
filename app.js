@@ -11,7 +11,7 @@ const morgan = require('morgan')
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const expressSession = require('express-session')
-
+const flash = require('connect-flash')
 // Config imports
 try{var { connection, conn } = require('./public/js/server')}
 catch (e) {
@@ -47,6 +47,9 @@ app.use(expressSession({
         maxAge: 1000 * 60 * 60
     }
 }));
+
+// You need to use connect-flash before passport
+app.use(flash());
 
 
 // =======================================
