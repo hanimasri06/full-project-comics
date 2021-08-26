@@ -7,8 +7,8 @@ const checkComicOwner = async (req,res, next) => {
         res.locals.comic = comic;
         next()
     } else {
+        req.flash('error', 'You need to be the comic owner to edit this comic')
         res.redirect('back')
-        req.session.error = 'You must be owner to edit this post'
     }
 }
 
@@ -19,7 +19,7 @@ const checkCommentOwner = async (req, res, next) => {
         next()
     } else {
         res.redirect('back');
-        req.session.error = 'You must be comment owner'
+        req.flash('error', 'You must be comment owner')
     }
     
 }

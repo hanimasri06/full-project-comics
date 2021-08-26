@@ -16,13 +16,13 @@ router.post('/signup', async (req, res) => {
             email: req.body.email,
             username: req.body.username
         }), req.body.password)
-        console.log(newUser);
+            req.flash('success', `Signed you up as ${newUser.username}`)
         passport.authenticate('local')(req, res, () => {
             res.redirect('/comics')
         });
     }
     catch (err) {
-        console.log(err);
+        req.flash('error', 'There was an error signing you up')
         res.send(err)
     }
 });
@@ -35,13 +35,16 @@ router.get('/login', (req, res) => {
 // Login Post
 router.post('/login', passport.authenticate('local', {
     successRedirect: '/comics',
-    failureRedirect: '/login'
+    failureRedirect: '/login',
+    failureFlash: true,
+    successFlash: 'logged in sucessfully'
 }))
 
 
 // Logout
 router.get('/logout', (req, res, next) => {
 req.logout()
+req.flash('success', "Logged Out")
 res.redirect('/comics')
 })
 module.exports = router

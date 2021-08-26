@@ -424,7 +424,9 @@ justify-self: center;
 .error-flash {
     background-color: rgba(255, 115, 0, 0.603);
 }
-
+.sucess-flash {
+    background-color: rgba(30, 170, 2, 0.459);
+}
 .flash {
     border-radius: 0 0 1rem 1rem;
     color: #FBFEFD;
@@ -456,11 +458,6 @@ justify-self: center;
 .flash-new {
 bottom: 10rem !important;
 }
-
-
-
-
-
 
 
 

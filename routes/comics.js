@@ -32,7 +32,7 @@ const comics = await Book.find({
 res.render('comics', {comics})
 }
 catch (err) {
-console.log(err)
+req.flash('error', "There was an error searching the database")
 }
 })
 
@@ -47,6 +47,7 @@ router.get('/genre/:genre', async (req, res, next) => {
     }
     else {
         // If no, send error
+        req.flash('error', 'There was an error searching the database')
         res.send('error')
     }
 
@@ -64,6 +65,7 @@ res.render('specificBook', {comics: book, comments})
 
 }
 catch (err) {
+    req.flash('error', 'There was an error finding this comic')
     console.error(err)
     res.send(err)
 } 
@@ -96,11 +98,13 @@ router.post('/',  isLoggedIn, async (req, res, next) => {
     
         });
         try {
-        const saving = await newBook.save()
+        const saving = await newBook.save();
+        req.flash('success', `${newBook.title} was added successfully`)
         res.redirect(`/comics/${saving._id}`)
-        console.log('CREATED:',saving)
     }
-    catch (err) { console.log(err)}
+    catch (err) {
+        req.flash('error', 'There was an error creating the comic')
+    }
 
 })
 
@@ -111,7 +115,14 @@ router.get('/:id/edit',isLoggedIn ,checkComicOwner,async (req, res, next) => {
     // if logged in check if they own the comic
     // If not redirect them to show page
     // If owner render comcis edit
-    res.render('comics_edit')
+    try {
+        res.render('comics_edit')
+        
+    }
+    catch (err) {
+        
+    }
+    
     
 });
 
@@ -131,11 +142,11 @@ router.put('/:id', isLoggedIn,checkComicOwner,async (req, res, next) => {
             color: !!req.body.color,};
             try {   
             const found = await Book.findByIdAndUpdate(req.params.id, comicBody, {new: true, useFindAndModify: false}).exec()
-            console.log(found);
+            req.flash('success',`${comicBody.title} was edited successfully`)
             res.redirect(`/comics/${req.params.id}`)
     }
     catch (err) {
-        console.log(err)
+        req.flash('error', 'There was an error')
         res.redirect('/comics')
     }
 });
@@ -144,11 +155,11 @@ router.put('/:id', isLoggedIn,checkComicOwner,async (req, res, next) => {
 router.delete('/:id', isLoggedIn, checkComicOwner,async (req, res, next) => {
     try {
         const deletedBook = await Book.findByIdAndDelete(req.params.id).exec()
-        console.log('DELETED:', deletedBook);
+        req.flash('success', `${deletedBook.title} is deleted`)
         res.redirect('/comics');
     }
     catch (err) {
-        console.log(err)
+        req.flash('error', 'There was an error deleting')
     }
 })
 
