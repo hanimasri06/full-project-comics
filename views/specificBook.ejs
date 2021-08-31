@@ -25,7 +25,21 @@
                     <% } %> 
                 </div>
                 <br><br><br><br>
-                <a href="/comics/<%= comics._id  %>/comments/new"><button>Add Comment</button></a>
+                <div class="comment-header">
+                    <a href="/comics/<%= comics._id  %>/comments/new"><button>Add Comment</button></a>
+                    <div class="voting-container">
+                        <% if (user){  %> 
+                        <button id="thumbs__up"><i class="far fa-thumbs-up"></i></button>
+                        <% } %> 
+                        <span>10</span>
+                        <% if (user){  %> 
+                        <button id="thumbs__down"><i class="far fa-thumbs-down"></i></button>
+                        <% } %> 
+                        
+                    </div>
+                </div>
+                
+
                 <% comments.forEach((cmnt) => { %> 
                     <div class="comments-container">
                         <!-- username - comment loop -->
@@ -41,6 +55,10 @@
                 
 </section>
 
+
+
+<script>var comicId= "<%- comics._id%>"</script>
+<script src="/js/specificBook.js"></script>
 
 
 

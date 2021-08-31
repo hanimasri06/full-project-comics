@@ -53,7 +53,17 @@ router.get('/genre/:genre', async (req, res, next) => {
 
 } )
 
-
+router.post('/vote', isLoggedIn, async (req, res, next) => {
+console.log('Rrquest body:', req.body);
+try {
+    const comic = await Book.findById(req.body.comicId)
+    console.log(comic)
+    res.json(comic);
+}
+catch (err) {
+    console.log(err)
+}
+})
 
 
 // SPECIFIC
@@ -93,7 +103,9 @@ router.post('/',  isLoggedIn, async (req, res, next) => {
             owner: {
                 id: req.user._id,
                 username: req.user.username
-            }
+            },
+            upvotes: [req.user.username],
+            downvotes: []  
             
     
         });

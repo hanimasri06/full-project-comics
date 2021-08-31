@@ -459,8 +459,47 @@ justify-self: center;
 bottom: 10rem !important;
 }
 
+.comment-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.voting-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.voting-container button {
+    margin-top: 0;
+    width: 9rem;
+    height: 3rem;
+    border: 2px #017172 solid;
+    background: #FFFFFF;
+    transition: all 1s;
+}
+
+.voting-container button:hover {
+    background: #017172;
+}
+.voting-container button:hover i {
+    color: #FBFEFD;
+}
+.voting-container button i {
+    font-size: 2rem;
+    color: #017172;
+    transition: all 1s;
+}
 
 
+
+.voting-container span {
+    font-family: 'Red Rose';
+    font-weight: 500;
+    font-size: 2rem
+
+}
 /* MEDIA SCREENS */
 
 @media screen and (min-width: 768px) {

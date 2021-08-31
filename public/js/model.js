@@ -19,7 +19,9 @@ const BookSchema = new mongoose.Schema({
                 ref: "User"
             }, 
         username: String,
-    }      
+    },
+    upvotes: [String],
+    downvotes: [String]    
 });
 
 const Book = mongoose.model('Book', BookSchema)

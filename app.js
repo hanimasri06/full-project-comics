@@ -35,7 +35,7 @@ app.use(express.static('public'))
 app.use(methodOverride('_method'))
 // Body parser config
 app.use(express.urlencoded({extended: true}));
-app.use(express.json())
+app.use(express.json({type: ['application/json', 'text/plain']}))
 
 
 // Express Session Config
