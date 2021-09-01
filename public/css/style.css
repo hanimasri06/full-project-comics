@@ -475,24 +475,41 @@ bottom: 10rem !important;
     margin-top: 0;
     width: 9rem;
     height: 3rem;
-    border: 2px #017172 solid;
-    background: #FFFFFF;
     transition: all 1s;
-}
-
-.voting-container button:hover {
-    background: #017172;
-}
-.voting-container button:hover i {
-    color: #FBFEFD;
 }
 .voting-container button i {
-    font-size: 2rem;
-    color: #017172;
-    transition: all 1s;
+    font-size: 1.8rem;
+}
+.btn-success {
+background: #017172;
 }
 
 
+
+.btn-success-outline {
+    background: #FBFEFD;
+    border: #017172 solid 2px;
+    color: #017172;
+}
+.btn-success-outline:hover {
+    background: #01c2c5;
+    color: #FBFEFD;
+}
+
+
+.btn-alert {
+background: #5c0303;
+}
+    
+.btn-alert-outline {
+    background: #FBFEFD;
+    border: #5c0303 solid 2px;
+    color: #5c0303;
+}
+.btn-alert-outline:hover {
+    background: #a0364f;
+    color: #FBFEFD;
+}
 
 .voting-container span {
     font-family: 'Red Rose';

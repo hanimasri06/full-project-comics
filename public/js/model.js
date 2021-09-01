@@ -20,8 +20,14 @@ const BookSchema = new mongoose.Schema({
             }, 
         username: String,
     },
-    upvotes: [String],
-    downvotes: [String]    
+    upvotes:{
+        require: false,
+        type: [String]
+    },
+    downvotes: {
+        require: false,
+        type: [String]
+    } 
 });
 
 const Book = mongoose.model('Book', BookSchema)

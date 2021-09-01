@@ -28,12 +28,16 @@
                 <div class="comment-header">
                     <a href="/comics/<%= comics._id  %>/comments/new"><button>Add Comment</button></a>
                     <div class="voting-container">
-                        <% if (user){  %> 
-                        <button id="thumbs__up"><i class="far fa-thumbs-up"></i></button>
+                        <% if (user && comics.upvotes.indexOf(user.username) >= 0){  %> 
+                        <button id="thumbs__up" class="btn-success"><i class="far fa-thumbs-up"></i></button>
+                        <% } else if (user){  %> 
+                        <button id="thumbs__up" class=" btn-success-outline"><i class="far fa-thumbs-up"></i></button>
                         <% } %> 
-                        <span>10</span>
-                        <% if (user){  %> 
-                        <button id="thumbs__down"><i class="far fa-thumbs-down"></i></button>
+                        <span id="score"><%= comics.upvotes.length - comics.downvotes.length  %> </span>
+                        <% if (user && comics.downvotes.indexOf(user.username) >= 0){  %> 
+                        <button id="thumbs__down" class="btn-alert btn-alert-outline"><i class="far fa-thumbs-down"></i></button>
+                        <% } else if (user) {  %> 
+                        <button id="thumbs__down" class="btn-alert-outline"><i class="far fa-thumbs-down"></i></button>
                         <% } %> 
                         
                     </div>

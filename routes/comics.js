@@ -52,13 +52,60 @@ router.get('/genre/:genre', async (req, res, next) => {
     }
 
 } )
-
+//vote logic
 router.post('/vote', isLoggedIn, async (req, res, next) => {
-console.log('Rrquest body:', req.body);
+console.log('Request body:', req.body);
 try {
     const comic = await Book.findById(req.body.comicId)
-    console.log(comic)
-    res.json(comic);
+    const alreadyUpvoted = comic.upvotes.indexOf(req.user.username) // will be -1 if not found
+    const alreadyDownvoted = comic.downvotes.indexOf(req.user.username) // will be -1 if not found
+
+    let response = {}
+    // use the splice badel remove or delete. Beacause delete will not reindex or shorten the array.
+    switch (true) {
+        case alreadyDownvoted === -1 && alreadyUpvoted === - 1 : // has not voted before
+            if (req.body.voteType === 'up') { // upVoting
+                comic.upvotes.push(req.user.username);
+                await comic.save();
+                response = {message: "upVote succesfull", code: 1}
+            } else if (req.body.voteType === 'down') { // downVoting
+                comic.downvotes.push(req.user.username);
+                await comic.save();
+                response = {message: "downvote succesfull", code: -1}
+            } else {                                   // error
+                response = {message: 'Error 1', code: 'err'}
+            }
+            break;
+        case alreadyUpvoted >=0 : // Already upVoted
+        comic.upvotes.splice(alreadyUpvoted, 1)
+            if (req.body.voteType === 'up') {
+                await comic.save();
+                response = {message: 'Removed your vote', code: 0}
+            } else if (req.body.voteType === 'down') {
+                comic.downvotes.push(req.user.username)
+                await comic.save();
+                response = {message: 'Changed to downvote', code: -1}
+            } else {
+                response = {message: 'Error 2', code: 'err'}
+            }
+            break;
+        case alreadyDownvoted >=0 : // Already downVoted
+        comic.downvotes.splice(alreadyDownvoted, 1);
+        if (req.body.voteType === 'up') {
+            comic.upvotes.push(req.user.username)
+            await comic.save();
+            response = {message: 'Changed to upVote', code: 1}
+        } else if (req.body.voteType === 'down') {
+            await comic.save();
+            response = {message: 'Removed downvote', code: 0}
+        } else {
+            response = {message: 'Error 3', code: 'err'}
+        }
+            break;
+    }
+    // Update score immediately prior to sending
+    response.score = comic.upvotes.length - comic.downvotes.length 
+    res.json(response);
 }
 catch (err) {
     console.log(err)
@@ -104,7 +151,7 @@ router.post('/',  isLoggedIn, async (req, res, next) => {
                 id: req.user._id,
                 username: req.user.username
             },
-            upvotes: [req.user.username],
+            upvotes: [],
             downvotes: []  
             
     
